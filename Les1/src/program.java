@@ -9,7 +9,7 @@ public class program {
         System.out.println("fragment 4: " + Fragment4(amount));
         System.out.println("fragment 5: " + Fragment5(amount));
         System.out.println("fragment 6: " + Fragment6(amount));
-        //System.out.println("fragment 7: " + Fragment7(amount));
+        System.out.println("fragment 7: " + Fragment7(amount));
         System.out.println("fragment 8: " + Fragment8(amount));
     }
 
