@@ -21,5 +21,10 @@ public class Program {
         System.out.println("Binary:");
         int c  = BinaryRep.countBinary(14);
         System.out.println("binary amount: " + c);
+
+        System.out.println("");
+        System.out.println("String reverse:");
+        StringReverse sr = new StringReverse();
+        sr.reverse("Hello");
     }
 }
