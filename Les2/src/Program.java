@@ -16,5 +16,10 @@ public class Program {
         System.out.println("recursive:");
         int b  = Som.sum(14);
         System.out.println("Som recursief: " + b);
+
+        System.out.println("");
+        System.out.println("Binary:");
+        int c  = BinaryRep.countBinary(14);
+        System.out.println("binary amount: " + c);
     }
 }
