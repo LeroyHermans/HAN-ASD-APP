@@ -1,2 +1,5 @@
 # Ignore intelij files
 .idea
+
+# Ignore output directory
+out
