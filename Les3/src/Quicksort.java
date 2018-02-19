@@ -29,7 +29,7 @@ public class Quicksort {
             if (i <= j) {
                 exchange(i, j);
                 i++;
-                j++;
+                j--;
             }
         }
         if (low < j) {
