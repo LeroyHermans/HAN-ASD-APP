@@ -3,45 +3,61 @@ package nl.han.app.Algorithms;
 public class QuickSort<T extends Comparable<T>> extends Sorter<T> {
 
     public T[] sort(T[] arr) {
-        if(arr == null || arr.length == 0){
+        if (arr == null || arr.length <= 1) {
             return arr;
         }
-        return quickSort(arr, new Range(0, arr.length-1));
+        return quickSort(arr, 0, arr.length - 1);
     }
 
-    private T[] quickSort(T[] arr, Range range) {
-        T pivot = arr[range.low+(range.high-range.low)/2];
+    public String getName() {
+        return "Quicksort";
+    }
 
-        int leftIndex = range.low, rightIndex = range.high;
+    private T[] quickSort(T[] arr, int low, int high) {
+        T pivot = medianOfThree(arr, low, high);
 
-        while(leftIndex <= rightIndex){
-            while (arr[leftIndex].compareTo(pivot) < 0){
+        int leftIndex = low, rightIndex = high;
+
+        while (leftIndex <= rightIndex) {
+            while (arr[leftIndex].compareTo(pivot) < 0) {
                 leftIndex++;
             }
-            while(arr[rightIndex].compareTo(pivot) < 0){
+            while (arr[rightIndex].compareTo(pivot) > 0) {
                 rightIndex--;
             }
-            if(leftIndex <= rightIndex){
-                if(arr[leftIndex].compareTo(arr[rightIndex]) != 0){
+            if (leftIndex <= rightIndex) {
                     switchValues(arr, leftIndex, rightIndex);
 
                     leftIndex++;
                     rightIndex--;
-                }
             }
         }
 
-        if(range.low < rightIndex){
-            quickSort(arr, new Range(range.low, rightIndex));
+        if (low < rightIndex) {
+            quickSort(arr, low, rightIndex);
         }
-        if(leftIndex < range.high){
-            quickSort(arr, new Range(leftIndex, range.high));
+        if (leftIndex < high) {
+            quickSort(arr, leftIndex, high);
         }
 
         return arr;
     }
 
-    public String getName() {
-        return "Quicksort";
+
+    private T medianOfThree(T[] arr, int low, int high) {
+        int middle = (low + high) / 2;
+
+        if (arr[low].compareTo(arr[middle]) > 0) {
+            switchValues(arr, low, middle);
+        }
+        if (arr[low].compareTo(arr[high]) > 0) {
+            switchValues(arr, low, high);
+        }
+        if (arr[middle].compareTo(arr[high]) > 0) {
+            switchValues(arr, middle, high);
+        }
+
+        switchValues(arr, middle, high - 1);
+        return arr[high - 1];
     }
 }
