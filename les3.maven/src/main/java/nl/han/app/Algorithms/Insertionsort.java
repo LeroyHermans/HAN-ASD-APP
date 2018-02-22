@@ -1,20 +1,30 @@
 package nl.han.app.Algorithms;
 
-import nl.han.app.Interfaces.ISort;
+public class InsertionSort<T extends Comparable<T>> extends Sorter<T> {
 
-public class Insertionsort implements ISort {
+    @Override
+    public T[] sort(T[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return arr;
+        }
 
-    public int[] sort(int[] input) {
-        int temp;
-        for (int i = 1; i < input.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (input[j] < input[j - 1]) {
-                    temp = input[j];
-                    input[j] = input[j - 1];
-                    input[j - 1] = temp;
+        for (int pointer = 1; pointer < arr.length; pointer++) {
+            if (arr[pointer].compareTo(arr[pointer - 1]) < 0) {
+                for (int subpointer = pointer; subpointer > 0; subpointer--) {
+                    if (arr[subpointer].compareTo(arr[subpointer - 1]) < 0) {
+                        switchValues(arr, subpointer, subpointer - 1);
+                    } else {
+                        break;
+                    }
                 }
             }
         }
-        return input;
+        return arr;
     }
+
+    @Override
+    public String getName() {
+        return "InsertionSort";
+    }
+
 }

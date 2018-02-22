@@ -1,55 +1,68 @@
 package nl.han.app.Algorithms;
 
-import nl.han.app.Interfaces.ISort;
+public class MergeSort<T extends Comparable<T>> extends Sorter<T> {
 
-public class Mergesort implements ISort {
 
-    private int[] numbers;
-    private int[] helper;
-
-    private int number;
-
-    public int[] sort(int[] input) {
-        this.numbers = input;
-        number = input.length;
-        this.helper = new int[number];
-        mergesort(0, number - 1);
-        return this.numbers;
+    public T[] sort(T[] arr) {
+        if (arr == null || arr.length == 0) {
+            return arr;
+        }
+        mergeSort(arr, new Range(0, arr.length - 1));
+        return arr;
     }
 
-    private void mergesort(int low, int high) {
-        if (low < high) {
-            int middle = low + (high - low) / 2;
-            mergesort(low, middle);
-            mergesort(middle + 1, high);
-            merge(low, middle, high);
+    private void mergeSort(T[] arr, Range range) {
+        if (range.length <= 1) {
+            return;
         }
-    }
-
-    private void merge(int low, int middle, int high) {
-        for (int i = low; i <= high; i++) {
-            helper[i] = numbers[i];
-        }
-
-        int i = low;
-        int j = middle + 1;
-        int k = low;
-
-        while (i <= middle && j <= high) {
-            if (helper[i] <= helper[j]) {
-                numbers[k] = helper[i];
-                i++;
-            } else {
-                numbers[k] = helper[j];
-                j++;
+        if (range.length == 2) {
+            // There are only two elements, switch them if necessary and return.
+            if (arr[range.low].compareTo(arr[range.high]) > 0) {
+                switchValues(arr, range.low, range.high);
             }
-            k++;
+            return;
         }
-        while (i <= middle) {
-            numbers[k] = helper[i];
-            k++;
-            i++;
+
+        // split the array in two.
+        Range leftSide = new Range(range.low, range.low + range.length / 2);
+        Range rightSide = new Range(range.low + range.length / 2 + 1, range.high);
+
+        // recursion.
+        mergeSort(arr, leftSide);
+        mergeSort(arr, rightSide);
+
+        // merge.
+        merge(arr, leftSide, rightSide);
+    }
+
+    private void merge(T[] arr, Range left, Range right) {
+        Object[] helper = new Object[left.length + right.length];
+
+        int leftIndex = 0, rightIndex = 0;
+
+        for (int i = 0; i < helper.length; i++) {
+            if (leftIndex >= left.length) { // Left is empty. Take from right.
+                helper[i] = arr[right.low + rightIndex];
+                rightIndex++;
+            } else if (rightIndex >= right.length) { // Right is empty. Take from left.
+                helper[i] = arr[left.low + leftIndex];
+                leftIndex++;
+            } else if (arr[left.low + leftIndex].compareTo(arr[right.low + rightIndex]) <= 0) { // Left is lowest. Take from left.
+                helper[i] = arr[left.low + leftIndex];
+                leftIndex++;
+            } else { // Right is lowest. Take from Right.
+                helper[i] = arr[right.low + rightIndex];
+                rightIndex++;
+            }
         }
+
+        for (int i = 0; i < helper.length; i++) {
+            arr[left.low + i] = (T) helper[i];
+        }
+    }
+
+    public String getName() {
+        return "Mergesort";
     }
 }
 
