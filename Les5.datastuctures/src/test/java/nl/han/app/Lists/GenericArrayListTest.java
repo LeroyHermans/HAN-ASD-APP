@@ -1,5 +1,6 @@
-package nl.han.app.ArrayList;
+package nl.han.app.Lists;
 
+import nl.han.app.Lists.Interfaces.IGenericArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ public class GenericArrayListTest {
     @Test
     public void AddToArraylistTest(){
         // Arrange
-        GenericArrayList<Integer> sut = new GenericArrayList<Integer>();
+        IGenericArrayList<Integer> sut = new GenericArrayList<Integer>();
         Integer valueToAdd = 10;
 
         // Act
@@ -21,7 +22,7 @@ public class GenericArrayListTest {
     @Test
     public void AddToGenericArrayListSpecificIndexTest(){
         // Arrange
-        GenericArrayList<Integer> sut = new GenericArrayList<Integer>();
+        IGenericArrayList<Integer> sut = new GenericArrayList<Integer>();
         int valueToAdd = 10;
         int index = 5;
 
@@ -35,7 +36,7 @@ public class GenericArrayListTest {
     @Test
     public void AddToGenericArrayListLargerSpecificIndexTest(){
         // Arrange
-        GenericArrayList<Integer> sut = new GenericArrayList<Integer>();
+        IGenericArrayList<Integer> sut = new GenericArrayList<Integer>();
         int valueToAdd = 10;
         int index = 15;
 

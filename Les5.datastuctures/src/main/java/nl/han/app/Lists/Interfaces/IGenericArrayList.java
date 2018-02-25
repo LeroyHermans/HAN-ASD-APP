@@ -1,4 +1,4 @@
-package nl.han.app.ArrayList.Interfaces;
+package nl.han.app.Lists.Interfaces;
 
 public interface IGenericArrayList<T> {
     void add(T value);

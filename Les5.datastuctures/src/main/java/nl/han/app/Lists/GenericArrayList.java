@@ -1,6 +1,6 @@
-package nl.han.app.ArrayList;
+package nl.han.app.Lists;
 
-import nl.han.app.ArrayList.Interfaces.IGenericArrayList;
+import nl.han.app.Lists.Interfaces.IGenericArrayList;
 
 public class GenericArrayList<T> implements IGenericArrayList<T> {
 
@@ -30,7 +30,7 @@ public class GenericArrayList<T> implements IGenericArrayList<T> {
     }
 
     public void set(int index, T value) {
-        if(index < data.length){
+        if (index < data.length) {
             data[index] = value;
             size = index + 1;
         } else {
@@ -40,24 +40,24 @@ public class GenericArrayList<T> implements IGenericArrayList<T> {
         }
     }
 
-    private void resize(){
-        Object[] temp = new Object[data.length*2];
+    private void resize() {
+        Object[] temp = new Object[data.length * 2];
         copyArray(data, temp);
         data = temp;
     }
 
-    private void resize(int amount){
+    private void resize(int amount) {
         Object[] temp = new Object[amount];
         copyArray(data, temp);
         data = temp;
     }
 
     private void copyArray(Object[] origional, Object[] target) {
-        if(target.length < origional.length){
-            throw new RuntimeException( origional + " Cannot be copied into: " + target);
+        if (target.length < origional.length) {
+            throw new RuntimeException(origional + " Cannot be copied into: " + target);
         }
-        for(int i = 0; i < target.length; i++){
-            if(i < origional.length){
+        for (int i = 0; i < target.length; i++) {
+            if (i < origional.length) {
                 target[i] = origional[i];
             } else {
                 target[i] = null;
