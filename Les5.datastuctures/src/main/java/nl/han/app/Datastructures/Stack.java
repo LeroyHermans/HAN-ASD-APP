@@ -4,13 +4,13 @@ import nl.han.app.Datastructures.Interfaces.IStack;
 
 import java.lang.reflect.Array;
 
-public class Stack<T> implements IStack<T>{
+public class Stack<T> implements IStack<T> {
 
     private int maxSize;
     private int top;
     private T[] stack;
 
-    public Stack(int size, Class<T> c){
+    public Stack(int size, Class<T> c) {
         this.maxSize = size;
         //noinspection unchecked
         this.stack = (T[]) Array.newInstance(c, maxSize);

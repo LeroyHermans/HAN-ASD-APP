@@ -2,7 +2,6 @@ package nl.han.app.Algorithms;
 
 public class MergeSort<T extends Comparable<T>> extends Sorter<T> {
 
-
     public T[] sort(T[] arr) {
         if (arr == null || arr.length == 0) {
             return arr;

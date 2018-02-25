@@ -2,7 +2,7 @@ package nl.han.app.Generics;
 
 public class MemoryCell<T extends Comparable<T>> implements Comparable<MemoryCell<T>> {
 
-    T data;
+    private T data;
 
     public MemoryCell(T data){
         this.data = data;
