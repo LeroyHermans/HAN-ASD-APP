@@ -33,10 +33,7 @@ public class HANStack<T> implements IHANStack<T> {
 
     @Override
     public String toString() {
-        StringBuffer string = new StringBuffer();
-        for(int i = 0; i < stack.getSize(); i++){
-            string.append(stack.get(i));
-        }
-        return string.toString();
+        return "ArrayQueue{" + "list = " + stack.toString() + ", Length = " +
+                stack.getSize() + "}";
     }
 }
