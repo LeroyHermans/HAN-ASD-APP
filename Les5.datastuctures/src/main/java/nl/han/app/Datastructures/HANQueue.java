@@ -22,4 +22,13 @@ public class HANQueue<T> implements IHANQueue<T> {
         queue.remove(0);
         return temp;
     }
+
+    @Override
+    public String toString(){
+        StringBuffer string = new StringBuffer();
+        for(int i = 0; i < queue.size(); i++){
+            string.append(queue.get(i));
+        }
+        return string.toString();
+    }
 }

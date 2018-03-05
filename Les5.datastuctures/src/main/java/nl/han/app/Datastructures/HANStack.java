@@ -31,4 +31,12 @@ public class HANStack<T> implements IHANStack<T> {
         return stack.getSize();
     }
 
+    @Override
+    public String toString() {
+        StringBuffer string = new StringBuffer();
+        for(int i = 0; i < stack.getSize(); i++){
+            string.append(stack.get(i));
+        }
+        return string.toString();
+    }
 }
