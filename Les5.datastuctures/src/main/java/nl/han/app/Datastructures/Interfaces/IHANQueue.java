@@ -1,7 +1,4 @@
-package nl.han.app.Lists.Interfaces;
-
-
-import java.util.Collection;
+package nl.han.app.Datastructures.Interfaces;
 
 public interface IHANQueue<T> {
 

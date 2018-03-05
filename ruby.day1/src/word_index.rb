@@ -1,6 +1,6 @@
 class Word_Index
 
-  str = "Hello, world!"
-
-  puts "index: #{str.index('world')}"
+  def returnsHello
+    puts "Hello, world!"
+  end
 end
