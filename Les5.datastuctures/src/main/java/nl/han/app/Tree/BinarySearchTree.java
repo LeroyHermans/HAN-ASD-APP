@@ -1,13 +1,11 @@
 package nl.han.app.Tree;
 
 
+@SuppressWarnings("ALL")
 public class BinarySearchTree<T extends Comparable<T>> {
 
     private T value;
     private BinarySearchTree<T> left, right;
-    public BinarySearchTree(){
-
-    }
 
     public void add(T newValue) {
         if (newValue == null) {
@@ -106,10 +104,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public boolean hasBothChildren(){
         return hasRight() && hasLeft();
-    }
-
-    public boolean hasAChild(){
-        return hasLeft() || hasRight();
     }
 
     public boolean hasValue(){
