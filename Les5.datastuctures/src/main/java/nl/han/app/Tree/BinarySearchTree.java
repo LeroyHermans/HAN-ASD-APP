@@ -7,7 +7,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private T value;
     private BinarySearchTree<T> left, right;
 
-    public void add(T newValue) {
+    private void add(T newValue) {
         if (newValue == null) {
             throw new IllegalArgumentException("Key cannot be null");
         }

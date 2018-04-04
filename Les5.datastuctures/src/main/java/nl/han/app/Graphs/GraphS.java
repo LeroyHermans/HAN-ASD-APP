@@ -45,7 +45,6 @@ public class GraphS implements IGraphS {
         boolean addedOne;
         do {
             addedOne = false;
-            unconnectedloop:
             for (NodeS checkingNode : nodes.values()) {
                 for (EdgeS edge : checkingNode.neighbours) {
                     //if you fall in the group of connected nodes,
